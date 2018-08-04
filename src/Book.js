@@ -2,6 +2,9 @@ import React, { Component } from "react";
 
 class Book extends Component {
   render() {
+    let displayImage = this.props.book.imageLinks
+      ? this.props.book.imageLinks.thumbnail
+      : "";
     return (
       <div className="book">
         <div className="book-top">
@@ -10,10 +13,12 @@ class Book extends Component {
             style={{
               width: 128,
               height: 193,
-              backgroundImage: `url("${this.props.book.imageLinks.thumbnail}")`
+              // display image using API and read from console for imageLinks.thumbnail
+              backgroundImage: `url("${displayImage}")`
             }}
           />
           <div className="book-shelf-changer">
+            {/* move book on selected option */}
             <select
               onChange={event =>
                 this.props.moveShelf(this.props.book, event.target.value)
@@ -30,6 +35,7 @@ class Book extends Component {
             </select>
           </div>
         </div>
+        {/* show book title and author */}
         <div className="book-title">{this.props.book.title}</div>
         <div className="book-authors">{this.props.book.authors}</div>
       </div>

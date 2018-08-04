@@ -11,12 +11,14 @@ class BooksApp extends React.Component {
     books: []
   };
 
+  // fetch books using BooksAPI.js
   componentDidMount() {
     BooksAPI.getAll().then(books => {
       this.setState({ books: books });
     });
   }
 
+  // Manipulation with book shelf
   moveShelf = (book, shelf) => {
     BooksAPI.update(book, shelf);
 
@@ -28,7 +30,8 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-        <MainPage books={this.state.books} moveShelf={this.moveShelf} />
+        {/* <MainPage books={this.state.books} moveShelf={this.moveShelf} /> */}
+        <SearchPage />
       </div>
     );
   }
