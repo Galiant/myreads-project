@@ -30,8 +30,8 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-        {/* <MainPage books={this.state.books} moveShelf={this.moveShelf} /> */}
-        <SearchPage />
+        <MainPage books={this.state.books} moveShelf={this.moveShelf} />
+        <SearchPage moveShelf={this.moveShelf} />
       </div>
     );
   }
