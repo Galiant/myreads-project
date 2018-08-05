@@ -19,10 +19,16 @@ class BooksApp extends React.Component {
 
   // Manipulation with book shelf
   moveShelf = (book, shelf) => {
-    BooksAPI.update(book, shelf);
+    BooksAPI.update(book, shelf).then(response => {
+      // set shelf for new or updated book
+      book.shelf = shelf;
 
-    BooksAPI.getAll().then(books => {
-      this.setState({ books: books });
+      // get list of books without updated or new book
+      var updatedBooks = this.state.books.filter(b => b.id !== book.id);
+
+      // add book to array and set new state
+      updatedBooks.push(book);
+      this.setState({ books: updatedBooks });
     });
   };
 

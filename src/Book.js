@@ -5,18 +5,17 @@ class Book extends Component {
     let displayImage = this.props.book.imageLinks
       ? this.props.book.imageLinks.thumbnail
       : "";
+    // define css styles for images
+    const style = {
+      width: 128,
+      height: 193,
+      // display image using API and read from console for imageLinks.thumbnail
+      backgroundImage: `url("${displayImage}")`
+    };
     return (
       <div className="book">
         <div className="book-top">
-          <div
-            className="book-cover"
-            style={{
-              width: 128,
-              height: 193,
-              // display image using API and read from console for imageLinks.thumbnail
-              backgroundImage: `url("${displayImage}")`
-            }}
-          />
+          <div className="book-cover" style={style} />
           <div className="book-shelf-changer">
             {/* move book on selected option */}
             <select
